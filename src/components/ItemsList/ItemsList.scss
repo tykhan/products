@@ -1,0 +1,22 @@
+@import '../../design-tokens/variables';
+
+.products {
+  margin: 0 auto;
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, $cardWidth);
+    grid-gap: $cardsGapVertical $cardsGap;
+    max-width: 3 * $cardWidth + 4 * $cardsGap;
+    justify-content: center;
+
+    @media screen and (max-width: 992px) {
+        max-width: 2 * $cardWidth + 3 * $cardsGap;
+    }
+    
+    @media screen and (max-width: 576px) {
+        display: flex;
+        flex-direction: column;
+    }
+  }
+}

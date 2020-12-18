@@ -1,0 +1,45 @@
+@import '../../design-tokens/mixins';
+@import '../../design-tokens/variables';
+
+.form {
+  padding: 15px;
+  height: fit-content;
+  width: 400px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+
+  @media screen and (max-width: 760px) {
+    width: 450px;
+    margin: 0 auto 20px;
+  }
+
+  &__description {
+    resize: none;
+  }
+
+  &-label {
+    margin-bottom: 0;
+  }
+
+  &-control {
+    margin-bottom: 0.5rem;
+  }
+
+  &-btn {
+    @include buttonStyle;
+    width: 100%;
+    border: 1px solid $greenColor;
+    background-color: $greenColor;
+    color: #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: $greenColor;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
