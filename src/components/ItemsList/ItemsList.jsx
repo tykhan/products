@@ -19,9 +19,7 @@ export const ItemsList = () => {
     dispatch(action.turnOnLoader());
     const fetchProducts = () => async(dispatch) => {
       const products = await fetch(BASE_URL)
-        .then(response => {
-          return response.json();
-        });
+        .then(response => response.json());
 
       dispatch(action.setProducts(products));
       dispatch(action.turnOffLoader());
@@ -40,14 +38,15 @@ export const ItemsList = () => {
     filteredProducts.unshift(...filteredProducts.splice(pinnedCard - 1, 1))
   }
 
-  return (isLoading)
-    ? <Loader />
-    : (<div className="products">
-        <ul className="products-list">
-          {filteredProducts.map(product => (
-            <Item key={product.id} {...product} />
-          ))}
-        </ul>
-      </div>)
-  
+  return (isLoading) ? (
+    <Loader />
+  ) : (
+    <div className="products">
+      <ul className="products-list">
+        {filteredProducts.map(product => (
+          <Item key={product.id} {...product} />
+        ))}
+      </ul>
+    </div>
+  )
 }
