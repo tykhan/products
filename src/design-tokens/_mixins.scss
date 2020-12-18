@@ -1,0 +1,30 @@
+@mixin smallText() {
+  font-size: 13px;
+  line-height: 13px;
+}
+
+@mixin normalText() {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+@mixin boldText() {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+@mixin buttonStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  border-radius: 5px;
+  height: 40px;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  transition: color 0.5s, background-color 0.5s;
+}
