@@ -8,7 +8,3 @@ export const getProducts = () => store.getState().products;
 export const getPinnedCard = () => store.getState().pinedCard;
 export const getQuery = () => store.getState().searchQuery;
 export const getLoader = () => store.getState().isLoading;
-
-store.subscribe(() => {
-  console.log(store.getState());
-});

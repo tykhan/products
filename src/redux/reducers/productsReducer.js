@@ -7,7 +7,6 @@ export const productsReducer = (state = [], action) => {
       return [...action.payload];
 
     case DELETE_PRODUCT:
-      console.log(action);
       return state.filter(item => item.id !== action.payload);
 
     case ADD_NEW_CARD:

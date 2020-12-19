@@ -33,9 +33,21 @@ export const ItemsList = () => {
       item => item.title.toLowerCase().includes(query.toLowerCase()) ||
       item.description.toLowerCase().includes(query.toLowerCase())
   );
-  
-  if (pinnedCard) {
-    filteredProducts.unshift(...filteredProducts.splice(pinnedCard - 1, 1))
+
+  const pinHandler = (product) => {
+    const cardToPinId = filteredProducts.indexOf(product);
+    const splicedCard = filteredProducts.splice(cardToPinId, 1);
+
+    if (product.id !== pinnedCard) {
+      filteredProducts.unshift(...splicedCard);
+      dispatch(action.setProducts(filteredProducts))
+      dispatch(action.pinProduct(product.id));
+      return;
+    }
+    filteredProducts.push(...splicedCard);
+    filteredProducts.sort((a, b) => a.id - b.id);
+    dispatch(action.setProducts(filteredProducts));
+    dispatch(action.unpinProduct());
   }
 
   return (isLoading) ? (
@@ -44,7 +56,7 @@ export const ItemsList = () => {
     <div className="products">
       <ul className="products-list">
         {filteredProducts.map(product => (
-          <Item key={product.id} {...product} />
+          <Item key={product.id} product={product} pinHandler={pinHandler} />
         ))}
       </ul>
     </div>
